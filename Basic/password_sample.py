@@ -1,9 +1,20 @@
 import random
+import string
 
-passlen=8
-password="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567891@#$%^&*"
+letters= string.ascii_letters
+digit= string.digits
+special_characters= string.punctuation
+password = letters+digit+special_characters
+valid = True
 
-user_password= random.sample(password,passlen)
-#users= ''.join(user_password)
-users = ''.join(str(x) for x in user_password)
-print("Your password is:", users)
+while valid:
+    passlen = int(input("enter the the password length. Your password length min:8 and max: 16"))
+    if passlen >= 8 and passlen <= 16:
+        user_password = ''.join(str(x) for x in random.sample(password, passlen))
+        print("Your password is:", user_password)
+        break
+    else:
+        print("please give the correct password length")
+
+
+
